@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Commercial Bank International Mobile",
+    "slug": "commercial-bank-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "commercial-bank-mobile",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {},
+    "web": {
+      "favicon": "./assets/images/icon.png"
+    },
+    "splash": {
+      "backgroundColor": "#f7f9fc",
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

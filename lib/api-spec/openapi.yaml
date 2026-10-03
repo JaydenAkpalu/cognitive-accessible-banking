@@ -1,0 +1,185 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: assistant
+    description: Contextual accessibility assistant
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /assistant/explain:
+    post:
+      operationId: explainBankingContext
+      tags: [assistant]
+      summary: Explain the current banking page
+      description: Answers a question using only the fictional banking context supplied by the client.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AssistantExplainInput"
+      responses:
+        "200":
+          description: Contextual plain-language answer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssistantExplainResponse"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    AssistantPageContext:
+      type: object
+      properties:
+        page:
+          type: string
+        mode:
+          type: string
+        step:
+          type: string
+        settings:
+          $ref: "#/components/schemas/AccessibilityPreferences"
+        home:
+          $ref: "#/components/schemas/AssistantHomeContext"
+        transfer:
+          $ref: "#/components/schemas/AssistantTransferContext"
+        savings:
+          $ref: "#/components/schemas/AssistantSavingsContext"
+      required: [page, mode, step, settings]
+    AssistantHomeContext:
+      type: object
+      properties:
+        availableBalance:
+          type: string
+        accountLabel:
+          type: string
+        transactionCount:
+          type: integer
+      required: [availableBalance, accountLabel, transactionCount]
+    AssistantTransferContext:
+      type: object
+      properties:
+        step:
+          type: string
+        recipient:
+          type: string
+        bank:
+          type: string
+        amount:
+          type: string
+        fee:
+          type: string
+        total:
+          type: string
+        expectedArrival:
+          type: string
+        purpose:
+          type: string
+        cancellable:
+          type: string
+        warning:
+          type: string
+        nextStep:
+          type: string
+      required: [step, recipient, bank, amount, fee, total, expectedArrival, purpose, cancellable, warning, nextStep]
+    AssistantProductContext:
+      type: object
+      properties:
+        name:
+          type: string
+        productType:
+          type: string
+        description:
+          type: string
+        risk:
+          type: string
+        minimum:
+          type: string
+        performance:
+          type: string
+        fees:
+          type: string
+        access:
+          type: string
+        term:
+          type: string
+        interest:
+          type: string
+        conditions:
+          type: string
+        withdrawal:
+          type: string
+        objective:
+          type: string
+        risks:
+          type: string
+      required: [name, productType, description, risk, minimum, fees, access, conditions]
+    AssistantSavingsContext:
+      type: object
+      properties:
+        savingsBalance:
+          type: string
+        fixedDepositBalance:
+          type: string
+        investmentValue:
+          type: string
+        totalInvested:
+          type: string
+        selectedProduct:
+          $ref: "#/components/schemas/AssistantProductContext"
+      required: [savingsBalance, fixedDepositBalance, investmentValue, totalInvested]
+    AccessibilityPreferences:
+      type: object
+      properties:
+        minimalInformation:
+          type: boolean
+        literalLanguage:
+          type: boolean
+        stepByStep:
+          type: boolean
+      required: [minimalInformation, literalLanguage, stepByStep]
+    AssistantExplainInput:
+      type: object
+      properties:
+        question:
+          type: string
+          minLength: 1
+          maxLength: 500
+        context:
+          $ref: "#/components/schemas/AssistantPageContext"
+        preferences:
+          $ref: "#/components/schemas/AccessibilityPreferences"
+      required: [question, context, preferences]
+    AssistantExplainResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+      required: [answer]
+

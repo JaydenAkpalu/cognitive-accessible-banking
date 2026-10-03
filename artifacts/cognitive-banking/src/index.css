@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+
+  --opaque-button-border-intensity: -8;
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  --background: 180 20% 98%;
+  --foreground: 200 30% 15%;
+  
+  --border: 180 15% 88%;
+  --input: 180 15% 88%;
+  --ring: 183 31% 25%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 200 30% 15%;
+  --card-border: 180 15% 88%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 200 30% 15%;
+  --popover-border: 180 15% 88%;
+  
+  --primary: 183 31% 25%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 180 15% 90%;
+  --secondary-foreground: 200 30% 15%;
+  
+  --muted: 180 10% 92%;
+  --muted-foreground: 200 15% 45%;
+  
+  --accent: 183 25% 85%;
+  --accent-foreground: 183 31% 25%;
+  
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 200 30% 15%;
+  --sidebar-border: 180 15% 88%;
+  --sidebar-primary: 183 31% 25%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 180 15% 92%;
+  --sidebar-accent-foreground: 200 30% 15%;
+  --sidebar-ring: 183 31% 25%;
+
+  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
+  --radius: 0.75rem; 
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+body[data-cognitive-mode="true"] {
+  --background: 42 20% 96%;
+  --foreground: 40 8% 18%;
+  --border: 40 8% 84%;
+  --input: 40 8% 84%;
+  --ring: 174 26% 32%;
+  --card: 45 20% 99%;
+  --card-foreground: 40 8% 18%;
+  --card-border: 40 8% 84%;
+  --popover: 45 20% 99%;
+  --popover-foreground: 40 8% 18%;
+  --popover-border: 40 8% 84%;
+  --primary: 174 26% 32%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 42 12% 91%;
+  --secondary-foreground: 40 8% 18%;
+  --muted: 42 10% 91%;
+  --muted-foreground: 40 7% 38%;
+  --accent: 174 18% 88%;
+  --accent-foreground: 174 26% 32%;
+  --destructive: 3 35% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --sidebar: 45 20% 99%;
+  --sidebar-foreground: 40 8% 18%;
+  --sidebar-border: 40 8% 84%;
+  --sidebar-primary: 174 26% 32%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 42 12% 91%;
+  --sidebar-accent-foreground: 40 8% 18%;
+  --sidebar-ring: 174 26% 32%;
+}
+
+.dark {
+  /* Enforce light mode mostly, but add basic dark mode if ever triggered */
+  --background: 200 30% 10%;
+  --foreground: 180 20% 98%;
+  --border: 200 30% 20%;
+  --input: 200 30% 20%;
+  --ring: 183 31% 45%;
+  --card: 200 30% 12%;
+  --card-foreground: 180 20% 98%;
+  --card-border: 200 30% 20%;
+  --popover: 200 30% 12%;
+  --popover-foreground: 180 20% 98%;
+  --popover-border: 200 30% 20%;
+  --primary: 183 31% 45%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 200 30% 20%;
+  --secondary-foreground: 180 20% 98%;
+  --muted: 200 30% 20%;
+  --muted-foreground: 180 15% 65%;
+  --accent: 183 31% 25%;
+  --accent-foreground: 180 20% 98%;
+  --destructive: 0 62% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --sidebar: 200 30% 12%;
+  --sidebar-foreground: 180 20% 98%;
+  --sidebar-border: 200 30% 20%;
+  --sidebar-primary: 183 31% 45%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 200 30% 20%;
+  --sidebar-accent-foreground: 180 20% 98%;
+  --sidebar-ring: 183 31% 45%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Accessibility Mode Overrides */
+body[data-reduced-animations="true"] *,
+body[data-reduced-animations="true"] *::before,
+body[data-reduced-animations="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+body[data-larger-text="true"] {
+  font-size: 110%;
+}
+
+body[data-increased-spacing="true"] .gap-4 { gap: 1.5rem !important; }
+body[data-increased-spacing="true"] .gap-6 { gap: 2rem !important; }
+body[data-increased-spacing="true"] .p-6 { padding: 2rem !important; }
+body[data-increased-spacing="true"] .mb-6 { margin-bottom: 2rem !important; }
+body[data-increased-spacing="true"] .mt-6 { margin-top: 2rem !important; }
+
+/* Hide ugly search cancel button in Chrome until we can style it properly */
+@layer utilities {
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+}

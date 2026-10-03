@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Cognitive Banking"
+description = "A professional fintech prototype that adds a personalized cognitive-accessibility layer to a fictional bank, with Accessibility Mode, Decision Lens, and a contextual AI assistant."
+version = "1.0.0"
+id = "artifacts/cognitive-banking"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23509
+
+[services.development]
+run = "pnpm --filter @workspace/cognitive-banking run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cognitive-banking", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cognitive-banking/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23509"
+BASE_PATH = "/"

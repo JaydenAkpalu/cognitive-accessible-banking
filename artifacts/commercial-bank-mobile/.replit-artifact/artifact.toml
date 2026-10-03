@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/mobile/"
+title = "Commercial Bank International Mobile"
+description = "A native mobile banking companion for the fictional Commercial Bank International prototype, with a focused account overview, hamburger navigation, touch-friendly transfer flow, and the existing Cognitive Mode experience."
+version = "1.0.0"
+id = "artifacts/commercial-bank-mobile"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/mobile/" ]
+localPort = 22799
+
+[services.development]
+run = "pnpm --filter @workspace/commercial-bank-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/commercial-bank-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/commercial-bank-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "22799"
+BASE_PATH = "/mobile/"
