@@ -1,27 +1,39 @@
 # Cognitive Accessible Banking
 
-A mobile banking prototype that adapts its interface for customers who find dense financial information overwhelming. Built for the DIFC x CBI Future of Banking hackathon.
+A mobile banking prototype that adapts to customers who find dense financial information overwhelming. Built by our team for the DIFC x CBI Future of Banking Hackathon.
 
-## What it does
-- Normal Mode: a full, information-rich banking dashboard.
-- Cognitive Mode: a calmer, task-first experience that asks "What would you like to do?" and reveals details only when needed.
-- Settings control the experience: step-by-step guidance, simpler information, plain language, text size, spacing, and reduced distractions.
-- An AI assistant explains financial terms and products. It explains, it never recommends.
+## The idea
 
-## Design decisions
-- Progressive disclosure instead of removing information.
-- The customer stays in control of how much they see.
-- Plain-language alternatives for financial jargon.
+Most banking apps show everything at once. For many customers, including people who are neurodivergent, anxious about money, or new to finance, that makes it hard to know where to start.
+
+This prototype has two modes:
+
+- **Normal Mode:** a full, information-rich banking dashboard.
+- **Cognitive Mode:** a calmer, task-first experience that asks "What would you like to do?" and reveals details only when they become relevant.
+
+## Features
+
+- Progressive disclosure: information is revealed step by step, never removed.
+- Customizable Cognitive Mode settings: step-by-step guidance, simpler information, plain language, text size, spacing, and reduced distractions.
+- Plain-language alternatives for financial jargon (for example, "Yearly fee" instead of "Annual management fee").
+- Guided flows for saving, investing, and viewing your money.
+- A contextual AI assistant that explains financial terms and products. It explains, but never recommends.
+
+## Design principles
+
+- The customer stays in control of how much information they see.
+- The system never makes financial decisions for the user.
+- Simplicity is a deliberate design choice, not a stripped-down version of the app.
 
 ## Tech stack
-TypeScript, React / Expo, pnpm workspace (fill in what's accurate)
+
+TypeScript, React, Expo, Vite, pnpm workspaces
 
 ## Running locally
-pnpm install, then run the app from `artifacts/` (add the exact command once you've confirmed it).
-AI features need `AI_INTEGRATIONS_OPENAI_API_KEY` and a base URL set in a `.env` file.
 
-## Built with
-Designed and directed by Jayden Akpalu, built with Replit's AI tooling.
+1. Install Node.js and pnpm.
+2. Run `pnpm install` from the project root.
+3. Start an app from the `artifacts/` folder using the scripts in its `package.json`.
 
-## Screenshots
-![Normal dashboard](screenshots/normal-home-dashboard.png)
+The AI assistant needs an OpenAI-compatible API key, provided through environment variables in a local `.env` file. Without one, the rest of the app still runs.
+
